@@ -20,16 +20,18 @@ function App() {
 
   return (
     <Router>
-      <Route exact path="/">
-       <Meals meals={meals}></Meals>
-      </Route>
-      <Route path="/meals/:id">
-        <Meal></Meal>
-        
-      </Route>
-      <Route exact path="/test-component">
-        <TestComponent></TestComponent>
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Meals meals={meals}></Meals>
+        </Route>
+        <Route path="/meals/:id">
+          <Meal></Meal>
+          
+        </Route>
+        <Route exact path="/test-component">
+          <TestComponent></TestComponent>
+        </Route>
+      </Switch>
     </Router>
   );
 }
