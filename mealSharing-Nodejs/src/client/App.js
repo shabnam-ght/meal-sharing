@@ -4,6 +4,7 @@ import TestComponent from "./components/TestComponent/TestComponent";
 import {useState,useEffect} from "react";
 import Meal from "./components/Meal";
 import Meals from "./components/Meals";
+import Reservations from "./components/TestComponent/Reservations";
 const api_url="http://localhost:5000/api";
 
 function App() {
@@ -18,21 +19,31 @@ function App() {
     getMeals();
   },[])
 
+
+  const [reservation,setReservation]=useState([]);
+  useEffect(()=>{
+    async function getReservation(){
+      const url=`${api_url}/reservations`;
+      const response=await fetch(url);
+      const data=await response.json();
+      setReservation(data);
+    }
+    getReservation();
+  },[])
+
+  
   return (
-    <Router>
+    
       <Switch>
-        <Route exact path="/">
-          <Meals meals={meals}></Meals>
+        
+        <Route exact path="/" >
+          <Meals meals={meals}/>
         </Route>
-        <Route path="/meals/:id">
-          <Meal></Meal>
-          
-        </Route>
-        <Route exact path="/test-component">
-          <TestComponent></TestComponent>
+        <Route exact path="/meal/:id">
+          <Meal/>
         </Route>
       </Switch>
-    </Router>
+
   );
 }
 
