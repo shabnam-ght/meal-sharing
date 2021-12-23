@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import TestComponent from "./components/TestComponent/TestComponent";
 import {useState,useEffect} from "react";
 import Meal from "./components/Meal";
 import Meals from "./components/Meals";
-import Reservations from "./components/TestComponent/Reservations";
+
+
+
 const api_url="/api";
 
 function App() {
@@ -38,20 +39,19 @@ function App() {
   function updateLocalReservationState(newReservation) {
     const newList = [...reservation];
     newList.push(newReservation);
-    setReservartion(newList);
+    setReservation(newList);
   }
   return (
-    
+    <>
       <Switch>
-        
         <Route exact path="/" >
-          <Meals meals={meals}/>
+          <Meals meals={meals} />
         </Route>
         <Route exact path="/meal/:id">
-          <Meal oneMeal={getMeal} updateReservation={updateLocalReservationState}/>
+          <Meal oneMeal={getMeal} updateReservation={updateLocalReservationState} allReservations={reservation}/>
         </Route>
       </Switch>
-
+    </>
   );
 }
 

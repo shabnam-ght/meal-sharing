@@ -1,13 +1,40 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import {useState} from "react";
+import Alert from 'react-popup-alert'
+
+
 const API_URL="/api";
 
 
-function Meal({oneMeal , updateReservation}){
+function Meal({oneMeal , updateReservation, allReservations}){
 
   let params = useParams();
   let meal = oneMeal(parseInt(params.id));
+
+  const [alert, setAlert] =useState({
+    type: 'error',
+    text: 'This is a alert message',
+    show: false
+  })
+
+  function onCloseAlert() {
+    setAlert({
+      type: '',
+      text: '',
+      show: false
+    })
+  }
+
+  function onShowAlert(type) {
+    setAlert({
+      type: type,
+      text: 'Demo alert',
+      show: true
+    })
+  }
+
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,7 +49,16 @@ function Meal({oneMeal , updateReservation}){
       .then((reponse) => reponse.json())
       .then(() => updateReservation(response));
   }
+  function getReservations(mealid) {
 
+    let numberOfPeople = 0;
+   for (let i = 0; i < allReservations.length; i++) {
+   if(allReservations[i].id == mealid) {
+  numberOfPeople += allReservations[i].numberOfPeople
+}
+   }
+   return numberOfPeople < meal.max_reservations;
+ }
  
   const [numberOfGuests ,setnumberOfGuests]=useState("");
   const [phoneNumber,setPhoneNumber]=useState("");
@@ -34,14 +70,18 @@ function Meal({oneMeal , updateReservation}){
   const handleEmailChange = (event) => setEmail(event.target.value);
 const handleNumberOfGuests=(event) => setnumberOfGuests(event.target.value);
   
- 
 return(
   <>
+  
+  <button onClick={() => onShowAlert('success')}>
+    testbbbbutton
+  </button>
     <div>
         <p>{meal.title}</p>
         <p>{meal.description}</p>
         
     </div>
+    {getReservations(meal.id) &&
     <div>
       <h1>Submit a new meal!</h1>
         <form onSubmit={handleSubmit}>
@@ -69,7 +109,23 @@ return(
 
           <button type="submit">Submit Meal</button>
         </form>
-    </div>
+    </div>}
+
+    <Alert
+        header={'Header'}
+        btnText={'Close'}
+        text={alert.text}
+        type={alert.type}
+        show={alert.show}
+        onClosePress={onCloseAlert}
+        pressCloseOnOutsideClick={true}
+        showBorderBottom={true}
+        alertStyles={{}}
+        headerStyles={{}}
+        textStyles={{}}
+        buttonStyles={{}}
+      />
+
         </>
 );
 }
