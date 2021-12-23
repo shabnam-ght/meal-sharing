@@ -5,7 +5,7 @@ import {useState,useEffect} from "react";
 import Meal from "./components/Meal";
 import Meals from "./components/Meals";
 import Reservations from "./components/TestComponent/Reservations";
-const api_url="http://localhost:5000/api";
+const api_url="/api";
 
 function App() {
   const [meals,setMeals]=useState([]);
@@ -20,6 +20,10 @@ function App() {
   },[])
 
 
+  function getMeal(id) {
+    return meals.find((meal) => meal.id === id);
+  }
+
   const [reservation,setReservation]=useState([]);
   useEffect(()=>{
     async function getReservation(){
@@ -31,7 +35,11 @@ function App() {
     getReservation();
   },[])
 
-  
+  function updateLocalReservationState(newReservation) {
+    const newList = [...reservation];
+    newList.push(newReservation);
+    setReservartion(newList);
+  }
   return (
     
       <Switch>
@@ -40,7 +48,7 @@ function App() {
           <Meals meals={meals}/>
         </Route>
         <Route exact path="/meal/:id">
-          <Meal/>
+          <Meal oneMeal={getMeal} updateReservation={updateLocalReservationState}/>
         </Route>
       </Switch>
 
