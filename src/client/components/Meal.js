@@ -72,7 +72,6 @@ function Meal({ oneMeal, updateReservation, allReservations }) {
 
   return (
     <>
-      <button onClick={() => onShowAlert("success")}>testbbbbutton</button>
       <div>
         <p>{meal.title}</p>
         <p>{meal.description}</p>
@@ -111,7 +110,7 @@ function Meal({ oneMeal, updateReservation, allReservations }) {
             </label>
             <br />
 
-            <button type="submit">Submit Meal</button>
+            <button type="submit">Submit Reservation</button>
           </form>
         </div>
       )}

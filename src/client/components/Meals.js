@@ -1,15 +1,32 @@
 import React from "react";
-import Meal from "./Meal";
+import "./Meals.css";
 import { Link } from "react-router-dom";
-function Meals({ meals }) {
+function Meals({ meals, getMealPicture }) {
   return (
     <div>
-      <ul>
+      <ul
+        style={{
+          listStyleType: "none",
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexDirection: "column",
+        }}
+      >
         {meals.map((item) => {
           return (
-            <Link to={{ pathname: `/meal/${item.id}` }}>
-              <li>{item.title}</li>
-            </Link>
+            <>
+              <Link
+                to={{ pathname: `/meal/${item.id}` }}
+                style={{
+                  textDecoration: "none",
+                  fontFamily: "Ubuntu, sans-serif",
+                  fontSize: "20px",
+                }}
+              >
+                <li style={{ color: "white" }}>{item.title}</li>
+              </Link>
+              <img src={getMealPicture(item.id)}></img>
+            </>
           );
         })}
       </ul>
