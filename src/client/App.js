@@ -6,6 +6,7 @@ import Meal from "./components/Meal";
 import Meals from "./components/Meals";
 import "./components/Meals.css";
 import { size } from "lodash";
+import Footer from "./components/Footer";
 
 const api_url = "/api";
 const pictures = new Map([
@@ -99,6 +100,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footer></Footer>
     </>
   );
 }

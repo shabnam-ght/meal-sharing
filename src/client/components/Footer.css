@@ -1,0 +1,23 @@
+footer {
+  background-color: #ce8884;
+  color: #fdf8e8;
+  display: flex;
+  justify-content: space-around;
+  min-height: 420px;
+}
+footer div {
+  width: 15%;
+  margin-top: 30px;
+}
+address {
+  margin: 10px 0px;
+}
+.dates-footer {
+  color: #fdf8e8;
+  border-bottom: 1px solid #bed5ae;
+  width: 100%;
+  line-height: 35px;
+}
+p a {
+  color: #fdf8e8;
+}
