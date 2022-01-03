@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Meal from "./components/Meal";
 import Meals from "./components/Meals";
 import "./components/Meals.css";
+import { size } from "lodash";
 
 const api_url = "/api";
 const pictures = new Map([
@@ -62,7 +63,7 @@ function App() {
       <div
         style={{
           fontFamily: "Ubuntu, sans-serif",
-          backgroundColor: "blue",
+          backgroundColor: "#bed5ae",
           display: "flex",
           justifyContent: "space-between",
           flexDirection: "row",
@@ -78,6 +79,13 @@ function App() {
           }}
         ></img>
 
+        <div style={{ backgroundColor: "#ce8884" }}>
+          <p
+            style={{ color: "#fdf8e8", fontSize: "30px", paddingRight: "10px" }}
+          >
+            TRY THE TASTE OF THE WORLD WITH US{" "}
+          </p>
+        </div>
         <Switch>
           <Route exact path="/">
             <Meals meals={meals} getMealPicture={getMealPicture} />

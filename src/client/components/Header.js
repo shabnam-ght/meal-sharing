@@ -7,7 +7,7 @@ function Header() {
     <>
       <div class="header">
         <a href="#default" class="logo">
-          CompanyLogo
+          Meal Sharing
         </a>
         <div class="header-right">
           <a class="active" href="#home">

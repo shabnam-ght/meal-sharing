@@ -23,9 +23,15 @@ function Meals({ meals, getMealPicture }) {
                   fontSize: "20px",
                 }}
               >
-                <li style={{ color: "white" }}>{item.title}</li>
+                <li style={{ color: "ce8884" }}>{item.title}</li>
               </Link>
-              <img src={getMealPicture(item.id)}></img>
+              <img
+                src={getMealPicture(item.id)}
+                style={{
+                  height: "40%",
+                  width: "40%",
+                }}
+              ></img>
             </>
           );
         })}
