@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `meal-sharing`;
-USE `meal-sharing`;
+CREATE DATABASE  IF NOT EXISTS `heroku_01bf6e705fb9207`;
+USE `heroku_01bf6e705fb9207`;
 --
 -- Table structure for table `meals`
 --
