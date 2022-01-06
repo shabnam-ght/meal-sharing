@@ -5,9 +5,9 @@ import Alert from "react-popup-alert";
 
 const API_URL = "/api";
 
-function Meal({ oneMeal, updateReservation, allReservations, getMealPicture }) {
+function Meal({ getMeal, updateReservation, allReservations, getMealPicture }) {
   let params = useParams();
-  let meal = oneMeal(parseInt(params.id));
+  let meal = getMeal(parseInt(params.id));
 
   const [alert, setAlert] = useState({
     type: "error",

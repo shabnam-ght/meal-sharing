@@ -134,7 +134,7 @@ function App() {
           </Route>
           <Route exact path="/meal/:id">
             <Meal
-              oneMeal={getMeal}
+              getMeal={getMeal}
               updateReservation={updateLocalReservationState}
               allReservations={reservation}
               getMealPicture={getMealPicture}
